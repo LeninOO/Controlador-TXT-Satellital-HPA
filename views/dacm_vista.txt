@@ -1,0 +1,12 @@
+{
+	"viewName": "dacm",
+	"mainOutputTask": "datarate_ACM",
+	"fromTasks": [{
+		"taskName": "datarate_ACM",
+		"chooseOutputs": ["snmpgetout"]
+	}],
+	"registers": 100,
+	"template": "linesgraphcjs",
+	"viewDescription": "Data Rate ACM",
+	"mainOutput": "snmpgetout"
+}

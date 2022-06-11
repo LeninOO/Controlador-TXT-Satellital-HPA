@@ -1,0 +1,709 @@
+
+<html>
+<head>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+<link href="//www.fuelcdn.com/fuelux/3.13.0/css/fuelux.min.css" rel="stylesheet">
+
+<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+
+<script src="caltecmonitor.js" language="javascript"></script>
+<script src="managers.js" language="javascript"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script src="https://mozilla.github.io/nunjucks/files/nunjucks.min.js"></script>
+<script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+<script src="jquerymin.js"></script>
+<script src="highcharts.js"></script>
+<script src="highcharts-more.js"></script>
+<script src="solid-gauge.js"></script>
+<script src="3d.js"></script>
+
+<script>
+  zingchart.MODULESDIR = "https://cdn.zingchart.com/modules/";
+  ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9", "ee6b7db5b51705a13dc2339db3edaf6d"];
+</script>
+<style>
+.popover-content { 
+	background-color: black;
+	color: #00FF0F;
+	font-family: monotype, consolas;
+	width: 150px;
+	overflow: auto;
+                 }
+</style>
+
+<style type="text/css">
+#caja{
+		position:absolute;
+		top: 220px;
+		left: 845px;
+	}
+#cajon{
+		position:absolute;
+		top: 220px;
+		left: 0px;
+	}
+#container-Reflejada{
+		position:absolute;
+		top: 20px;
+		left: 650px;
+	}
+#container-Potencia{
+		position:absolute;
+		top: 20px;
+		left: 350px;
+	}
+ 
+#container-Atenuacion{
+		position:absolute;
+		top: 20px;
+		left: 50px;
+	}
+#container{
+		position:absolute;
+		top: 200px;
+		left: 250px;
+	}
+
+#manager_configurar1{
+		position:absolute;
+		top: 410px;
+		left: 10px;
+                width: 300px; 
+                height: 200px;
+                margin: 0 auto
+	}
+#manager_configurar3{
+		position:absolute;
+		top: 410px;
+		left:10px;
+                width: 300px;
+                height: 200px;
+                margin: 0 auto
+
+	}
+#manager_configurar5{
+		position:absolute;
+		top: 410px;
+		left: 10px;
+                width: 300px;
+                height: 200px;
+                margin: 0 auto
+
+	}
+
+  
+</style>
+
+<script>
+
+function Agrega()
+{
+document.getElementById("Text2").value = document.getElementById("Text1").value;
+}
+</script>
+
+<script id="tplPanelGestor" type="text/template">
+<div class="col-sm-4">
+  <div class="panel panel-default" id="manager_{{ idPanel }}" style="overflow: auto;">
+	<div class="panel-heading">{{ tituloPanel }}</div>
+	<div class="panel-body">
+      <form class="form-horizontal">
+      <fieldset>
+      {% for inputItem in inputList %}
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="textinput">{{ inputItem.label }}</label>  
+          <div class="col-md-4">
+            <input id="{{ inputItem.name }}" name="textinput" placeholder="" class="form-control input-md" type="text">
+          </div> 
+        </div>
+      {% endfor %}
+    
+    {% for inputItem in experimento %}
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="textinput">{{ experimento.label }}</label>  
+        <div class="col-md-4">
+           <input id="{{ inputItem.name }}" name="textinput" placeholder="" class="form-control input-md" type="select">
+           <select id="{{ experimento.name }}" class="form-control input-md">
+           <option value="limpiar">LIMPIAR</option> 
+           <option value="activar">ACTIVAR</option> 
+           <option value="reset">RESET</option> 
+           <option value="seteo">SETEO</option> 
+           </select>
+           </div> 
+           
+        </div>
+     
+     {% endfor %}
+
+	  <!-- Button -->
+      <div class="form-group">
+        <label class="col-md-4 control-label" for=""></label>
+        <div class="col-md-4">
+          <button name="" value="{{ idPanel }}" class="callSetter btn btn-primary" data-toggle="popover" title="Output" data-content="BAR">Cambiar</button>
+        </div>
+      </div>
+      </fieldset>
+      </form>	  
+	</div>
+  </div>
+  </div>
+</script>
+
+
+
+<script id="tplInputText" type="text/template">
+<div class="form-group">
+  <label class="col-md-4 control-label" for="textinput">{{ etiqueta }}</label>  
+  <div class="col-md-4">
+  <input id="{{ idInput }}" name="textinput" placeholder="" class="form-control input-md" type="text">
+    
+  </div>
+</div>
+</script>
+<script id="tplTable" type="text/template">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        {% for tHeader in tabheaders %}
+          <th>{{ tHeader }}</th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+    
+      {% for thistuple in tupleList %}
+      <tr>
+        {% for value in thistuple %}
+        <td>{{ value }}</td>
+        {% endfor %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</script>
+
+
+<style>
+  .panel-body {
+    overflow: auto;
+           
+  }
+  
+  .modal-body {
+    overflow: auto;
+  }
+  
+  .botones-pagina {
+    margin: 10px auto;
+  }
+  
+</style>
+
+
+<script type="text/javascript">
+$(function () {
+
+general = 1;
+coronel = 2;
+
+
+    var gaugeOptions = {
+
+        chart: {
+            type: 'solidgauge'
+        },
+
+        title: null,
+
+        pane: {
+            center: ['50%', '85%'],
+            size: '140%',
+            startAngle: -90,
+            endAngle: 90,
+            background: {
+                backgroundColor: '#EEE',
+                innerRadius: '60%',
+                outerRadius: '100%',
+                shape: 'arc'
+            }
+        },
+
+        tooltip: {
+            enabled: false
+        },
+
+        // the value axis
+        yAxis: {
+            stops: [
+                [0.1, '#55BF3B'], // green
+                [0.5, '#DDDF0D'], // yellow
+                [0.9, '#DF5353'] // red
+            ],
+            lineWidth: 0,
+            minorTickInterval: null,
+            tickAmount: 2,
+            title: {
+                y: -70
+            },
+            labels: {
+                y: 16
+            }
+        },
+
+        plotOptions: {
+            solidgauge: {
+                dataLabels: {
+                    y: 5,
+                    borderWidth: 0,
+                    useHTML: true
+                }
+            }
+        }
+    };
+
+  
+   var chartReflejada = Highcharts.chart('container-Reflejada', Highcharts.merge(gaugeOptions, {
+        yAxis: {min: 0,max: 200,title:{text: '  REFLEJADA  '}},credits:{enabled: false},
+        series: [{
+            name: 'Dbm',
+            data: [0],
+            dataLabels: {
+                format: '<div style="text-align:center"><span style="font-size:25px;color:' +
+                    ((Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black') + '">{y}</span><br/>' +
+                       '<span style="font-size:12px;color:silver">Watts</span></div>'
+            },
+            tooltip: {
+                valueSuffix: ' Watts'
+            }
+        }]
+
+                                                                                               }));
+
+var chartAtenuacion = Highcharts.chart('container-Atenuacion', Highcharts.merge(gaugeOptions, {
+        yAxis: {min: 0,max: 30,title:{text: '  ATENUACION  '}},credits:{enabled: false},
+        series: [{
+            name: 'Dbm',
+            data: [1],
+            dataLabels: {
+                format: '<div style="text-align:center"><span style="font-size:25px;color:' +
+                    ((Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black') + '">{y}</span><br/>' +
+                       '<span style="font-size:12px;color:silver">Dbm</span></div>'
+            },
+            tooltip: {
+                valueSuffix: ' DBm'
+            }
+        }]
+
+                                                                                             }));
+var chartPotencia = Highcharts.chart('container-Potencia', Highcharts.merge(gaugeOptions, {
+        yAxis: {min: 0,max: 200,title:{text: 'POTENCIA DE SALIDA '}},credits:{enabled: false},
+        series: [{
+            name: 'Dbm',
+            data: [0],
+            dataLabels: {
+                format: '<div style="text-align:center"><span style="font-size:25px;color:' +
+                    ((Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black') + '">{y}</span><br/>' +
+                       '<span style="font-size:12px;color:silver">DBm</span></div>'
+            },
+            tooltip: {
+                valueSuffix: ' DBm'
+            }
+        }]
+
+                                                                                           }));
+
+
+////////////////////////////////////////////// inicio bloque 2 /////////////////////////////////////////////
+
+    setInterval(function () {
+     var point,newVal,inc;
+    
+     $.ajax( {
+                   url: appURL + '/getManagers' , 
+                   dataType: "json",
+                   method: "POST",
+                   data: JSON.stringify( { } ),
+                   success: function ( res ) {
+                   console.log( res );
+                   ate = res['album'][0]["atenuacion"];
+                   cabi = res['album'][0]["cabina"];
+                   fan = res['album'][0]["fanvoltaje"];
+                   corri = res['album'][0]["corrientehelix"];
+                   volta = res['album'][0]["voltajehelix"];
+                   refleja = res['album'][0]["reflejada"];
+                   poted = res['album'][0]["potenciadbm"];
+                   potew = res['album'][0]["potenciawtt"];
+                   tubo = res['album'][0]["temperaturatubo"];
+                   
+                   at = parseFloat(ate);
+                   ca = parseFloat(cabi);
+                   fa = parseFloat(fan);
+                   co = parseFloat(corri);
+                   coronel = co;
+                   vo = parseFloat(volta);
+                   general = vo;
+                   re = parseFloat(refleja);
+                   pd = parseFloat(poted);
+                   pw = parseFloat(potew);   
+                   tu = parseFloat(tubo);
+
+                   ////alert(at+"  "+ca+"   "+fa+"  "+co+"  "+vo+" "+re+" "+pd+" "+pw+" "+tu);
+
+
+                     },
+
+                   error: function( xhr, status, error ) {
+                   location.reload( );
+                   ////alert(" NO HAY CONEXION CON EL HPA  "); 
+                     }
+
+           } );  
+
+////////////////////////////////////////////// fin bloque 2 /////////////////////////////////////////////
+
+
+
+        if (chartReflejada) {
+            point = chartReflejada.series[0].points[0];
+            inc = re;
+            point.y= 0;
+            newVal = point.y + inc;
+
+            point.update(newVal);
+                            } 
+
+            if (chartAtenuacion) {
+            point = chartAtenuacion.series[0].points[0];
+            inc = at;
+            point.y = 0;
+            newVal = point.y + inc;
+
+            point.update(newVal);
+                            }
+
+            if (chartPotencia) {
+            point = chartPotencia.series[0].points[0];
+            inc = pd;
+            point.y = 0
+            newVal = point.y + inc;
+
+            point.update(newVal);
+                            }
+
+
+     
+                   
+                            }, 3000);
+
+            });
+
+////////////////////////////////////////////////   fin  bloque  de los gauge /////////////////////////////////////////////////			
+			
+
+/////////////////////////// inicio bloque  temperatura ///////////////////////////////////////			
+$(function () {
+    Highcharts.chart('container', {
+
+        chart: {
+            type: 'gauge',
+            plotBorderWidth: 1,
+            plotBackgroundColor: {
+                linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 },
+                stops: [
+                    [0, '#FFF4C6'],
+                    [0.3, '#FFFFFF'],
+                    [1, '#FFF4C6']
+                ]
+            },
+            plotBackgroundImage: null,
+            height: 200
+        },
+
+        title: {
+            text: ' TEMPERATURA  C '
+        },credits:{enabled: false},
+
+        pane: [{
+            startAngle: -32,
+            endAngle: 45,
+            background: null,
+            center: ['25%', '145%'],
+            size: 300
+        }, {
+            startAngle: -32,
+            endAngle: 45,
+            background: null,
+            center: ['75%', '145%'],
+            size: 300
+        }],
+
+        tooltip: {
+            enabled: false
+        },
+
+        yAxis: [{
+            min: 20,
+            max: 50,
+            minorTickPosition: 'outside',
+            tickPosition: 'outside',
+            labels: {
+                rotation: 'auto',
+                distance: 20
+            },
+            plotBands: [{
+                from: 0,
+                to: 6,
+                color: '#C02316',
+                innerRadius: '100%',
+                outerRadius: '105%'
+            }],
+            pane: 0,
+            title: {
+                text: '<br/><span style="font-size:13px">CABINA</span>',
+                y: -32
+            }
+        }, {
+            min: 20,
+            max: 50,
+            minorTickPosition: 'outside',
+            tickPosition: 'outside',
+            labels: {
+                rotation: 'auto',
+                distance: 20
+            },
+            plotBands: [{
+                from: 0,
+                to: 6,
+                color: '#C02316',
+                innerRadius: '100%',
+                outerRadius: '105%'
+            }],
+            pane: 1,
+            title: {
+                text: '<br/><span style="font-size:13px"> TWT </span>',
+                y: -32
+            }
+        }],
+
+        plotOptions: {
+            gauge: {
+                dataLabels: {
+                    enabled: false
+                },
+                dial: {
+                    radius: '100%'
+                }
+            }
+        },
+
+
+        series: [{
+            name: 'Cabina',
+            data: [25],
+            yAxis: 0
+        }, {
+            name: 'Tubo',
+            data: [40],
+            yAxis: 1
+        }]
+
+    },
+
+        // Let the music play
+        function (chart) {
+            setInterval(function () {
+                if (chart.series) { // the chart may be destroyed
+                    var left = chart.series[0].points[0],
+                        right = chart.series[1].points[0],
+                        leftVal,
+                        rightVal,
+                        inc = (Math.random() - 0.5) * 3;
+                    left.y = 0
+                     
+                     
+                    leftVal = left.y + tu;
+                    rightVal =  ca;
+
+                   
+                    left.update(leftVal, false);
+                    right.update(rightVal, false);
+                    chart.redraw();
+                                  }
+                                    }, 3000);
+
+        });
+});
+
+$(function () {
+    $(document).ready(function () {
+        Highcharts.setOptions({
+            global: {
+                useUTC: false
+            }
+        });
+
+        Highcharts.chart('caja', {
+            chart: {
+                type: 'spline',
+                animation: Highcharts.svg, // don't animate in old IE
+                marginRight: 10,
+                events: {
+                    load: function () {
+
+                        // set up the updating of the chart each second
+                        var series = this.series[0];
+                        setInterval(function () {
+                            var x = (new Date()).getTime(), // current time
+                                y = coronel;
+                            series.addPoint([x, y], true, true);
+                        }, 3000);
+                    }
+                }
+            },
+            title: {
+                text: 'Corriente HELIX'
+            },
+			credits:{enabled: false},
+			
+			
+            xAxis: {
+                type: 'datetime',
+                tickPixelInterval: 150
+            },
+            yAxis: {
+                title: {
+                    text: 'mA'
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080' 
+                    
+                }]
+            },
+            tooltip: {
+                formatter: function () {
+                    return '<b>' +' '+ '</b>' +
+                      Highcharts.dateFormat('%H:%M:%S', this.x) + '<br/>' +  
+                        Highcharts.numberFormat(this.y, 2);
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            exporting: {
+                enabled: false
+            },
+            series: [{
+                name: 'Corriente',
+                data: (function () {
+                    // generate an array of random data
+                    var data = [],
+                        time = (new Date()).getTime(),
+                        i;
+
+                    for (i = -19; i <= 0; i += 1) {
+                        data.push({
+                            x: time + i * 3000,
+                            y: Math.random()
+                        });
+                    }
+                    return data;
+                }())
+            }]
+        });
+    });
+});
+$(function () {
+    $(document).ready(function () {
+        Highcharts.setOptions({
+            global: {
+                useUTC: false
+            }
+        });
+
+        Highcharts.chart('cajon', {
+            chart: {
+                type: 'spline',
+                animation: Highcharts.svg, // don't animate in old IE
+                marginRight: 10,
+                events: {
+                    load: function () {
+
+                        // set up the updating of the chart each second
+                        var series = this.series[0];
+                        setInterval(function () {
+                            var x = (new Date()).getTime(), // current time
+                                y = general;
+                            series.addPoint([x, y], true, true);
+                        }, 3000);
+                    }
+                }
+            },
+            title: {
+                text: 'Voltaje HELIX'
+            },
+			credits:{enabled: false},
+			
+			
+            xAxis: {
+                type: 'datetime',
+                tickPixelInterval: 150
+            },
+            yAxis: {
+                title: {
+                    text: 'kV'
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            },
+            tooltip: {
+                formatter: function () {
+                    return '<b>' +' '+ '</b>' +
+                      Highcharts.dateFormat('%H:%M:%S', this.x) + '<br/>' +  
+                        Highcharts.numberFormat(this.y, 2);
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            exporting: {
+                enabled: false
+            },
+            series: [{
+                name: 'Voltaje',
+                data: (function () {
+                    // generate an array of random data
+                    var data = [],
+                        time = (new Date()).getTime(),
+                        i;
+
+                    for (i = -19; i <= 0; i += 1) {
+                        data.push({
+                            x: time + i * 3000,
+                            y: Math.random()
+                        });
+                    }
+                    return data;
+                }())
+            }]
+        });
+    });
+});
+
+
+
+
+</script>
+</head>
+
+<body class="fuelux">
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<script src="//www.fuelcdn.com/fuelux/3.13.0/js/fuelux.min.js"></script>
+</body>

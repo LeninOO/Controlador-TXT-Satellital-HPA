@@ -1,0 +1,12 @@
+{
+	"viewName": "potenciarf",
+	"mainOutputTask": "meter_readings_query",
+	"fromTasks": [{
+		"taskName": "meter_readings_query",
+		"chooseOutputs": ["rfoutw"]
+	}],
+	"registers": 20,
+	"template": "linesgraphcjs",
+	"viewDescription": "Potencia de Salida (W)",
+	"mainOutput": "rfoutw"
+}

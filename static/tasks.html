@@ -1,0 +1,136 @@
+
+<html>
+<head>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+
+	<script src="caltecmonitor.js" language="javascript"></script>
+
+	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	<link href="js/bootstrap-switch.min.css" rel="stylesheet">
+	<script src="js/bootstrap-switch.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
+	<script src="js/tasks.js" language="javascript"></script>
+	
+	<style>
+	  .panel-body {
+		overflow: auto;
+	  }
+	  
+	  .modal-body {
+		overflow: auto;
+	  }
+	  
+	  .sw {
+	    text-align: center;
+	  }
+	</style>
+
+</head>
+
+<body>
+
+<div class="container-fluid">
+  <h1 class="page-header" id="principal">Un momento por favor...</h1>
+  <!--p> .</p-->
+  
+  <div id="tasks" class="panel panel-info">
+    <div class="panel-heading">
+      <h3 class="panel-title" style="margin-top: 8px; float:left;">Tareas programadas</h3>
+      <button type="button" id="cmdNewConnect" class="btn btn-default pull-right" data-dismiss="modal">Nueva Tarea</button><div class="clearfix"></div>
+    </div>
+    <div class="panel-body">
+    
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>Nombre de la tarea</th>
+            <th>Equipo</th>
+            <th>Conectado por</th>
+			<th>Inicializado</th>
+			<th>Preparado</th>
+            <th>Edición</th>
+          </tr>
+        </thead>
+        <tbody>
+  
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+
+
+<!-- Modal -->
+<div id="newConnectionModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Agregar nueva tarea</h4>
+      </div>
+      <div class="modal-body">
+		  <form class="form-horizontal">
+			<fieldset>
+			<!-- Text input-->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="textinput">Nombre</label>  
+			  <div class="col-md-4">
+			  <input id="txtNombre" placeholder="" class="form-control input-md" required="" type="text">
+				
+			  </div>
+			</div>
+
+			<!-- Select Basic -->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="">Dispositivo</label>
+			  <div class="col-md-4">
+				<select id="cmbDispositivo" class="form-control">
+				  <option value="1">Option one</option>
+				  <option value="2">Option two</option>
+				</select>
+			  </div>
+			</div>
+
+			<!-- Select Basic -->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="">Conexión</label>
+			  <div class="col-md-4">
+				<select id="cmbConexion" class="form-control">
+				  <option value="1">Option one</option>
+				  <option value="2">Option two</option>
+				</select>
+			  </div>
+			</div>
+
+			<!-- Text input-->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for="">Frecuencia</label>  
+			  <div class="col-md-4">
+			  <input id="txtFrec" placeholder="" class="form-control input-md" type="text">
+				
+			  </div>
+			</div>
+
+			</fieldset>
+			</form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="cmdOK" class="btn btn-success" data-dismiss="modal">OK</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- fin modal -->
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+</body>

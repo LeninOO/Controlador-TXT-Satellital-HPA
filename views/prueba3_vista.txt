@@ -1,0 +1,12 @@
+{
+  "viewName":"sucesos_att",
+  "viewDescription": "Attenuator",
+  "registers": 5,
+  "mainOutputTask": "meter_readings_query",
+  "mainOutput": "attenuatordb",
+  "fromTasks": [{
+    "taskName":"meter_readings_query",
+    "chooseOutputs": ["attenuatordb"]
+  }],
+  "template": "gauge"
+}

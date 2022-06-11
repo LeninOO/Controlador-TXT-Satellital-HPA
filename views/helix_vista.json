@@ -1,0 +1,12 @@
+{
+	"viewName": "helix",
+	"mainOutputTask": "meter_readings_query",
+	"fromTasks": [{
+		"taskName": "meter_readings_query",
+		"chooseOutputs": ["helixkvolt"]
+	}],
+	"registers": 20,
+	"template": "linesgraphcjs",
+	"viewDescription": "Voltaje del Helix",
+	"mainOutput": "helixkvolt"
+}

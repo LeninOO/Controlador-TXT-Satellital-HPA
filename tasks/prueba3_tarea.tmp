@@ -1,0 +1,9 @@
+{
+  "taskName": "meter_readings_query",
+  "modelNumber": "CPI700",
+  "connectTo": "cnx1",
+  "commandName" : "greaterThan",
+  "params": [
+  ],
+  "freq": 3
+}

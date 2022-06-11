@@ -1,0 +1,12 @@
+{
+	"viewName": "dre1",
+	"mainOutputTask": "trafico_puerto1",
+	"fromTasks": [{
+		"taskName": "trafico_puerto1",
+		"chooseOutputs": ["snmpgetout"]
+	}],
+	"registers": 100,
+	"template": "linesgraphcjs",
+	"viewDescription": "Data Rate Ethernet",
+	"mainOutput": "snmpgetout"
+}

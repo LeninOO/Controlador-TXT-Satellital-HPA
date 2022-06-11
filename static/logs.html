@@ -1,0 +1,129 @@
+
+<html>
+<head>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+
+	<script src="caltecmonitor.js" language="javascript"></script>
+
+	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	<link href="js/bootstrap-switch.min.css" rel="stylesheet">
+	<script src="js/bootstrap-switch.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
+	<script src="js/logs.js" language="javascript"></script>
+	
+	<style>
+	  .panel-body {
+		overflow: auto;
+	  }
+	  
+	  .modal-body {
+		overflow: auto;
+	  }
+	  
+	  .sw {
+	    text-align: center;
+	  }
+	</style>
+
+</head>
+
+<body>
+
+<div class="container-fluid">
+  <h1 class="page-header" id="principal">Un momento por favor...</h1>
+  <!--p> .</p-->
+  
+  <div id="tasks" class="panel panel-info">
+    <div class="panel-heading">
+      <h3 class="panel-title" style="margin-top: 8px; float:left;">Eventos HPA</h3>
+      <button type="button" id="cmdNewConnect" class="btn btn-default pull-right" data-dismiss="modal">Nueva Lista de LOGS</button><div class="clearfix"></div>
+    </div>
+    <div class="panel-body">
+    
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+		    <th>Orden</th>
+            <th>Tiempo</th>
+            <th>Evento</th>
+			<th>Actividad</th>
+			<th>Estado</th>
+			<th>Aten</th>
+			<th>Temp</th>
+			<th>FanV</th>
+            <th>Corriente</th>
+			<th>Voltaje</th>
+			<th>Reflejada</th>
+			<th>Salida</th>
+			<th>TWT</th>
+          </tr>
+        </thead>
+        <tbody>
+  
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+
+
+<!-- Modal -->
+<div id="newConnectionModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Nueva Lista Logs</h4>
+      </div>
+      <div class="modal-body">
+		  <form class="form-horizontal">
+			<fieldset>
+			<!-- Text input-->
+			
+
+			<!-- Select Basic -->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for=""> SELECCIONE  HPA</label>
+			  <div class="col-md-4">
+				<select id="cmbDispositivo" class="form-control">
+				  <option value="1">Option one</option>
+				  <option value="2">Option two</option>
+				</select>
+			  </div>
+			</div>
+
+			<!-- Select Basic -->
+			
+
+			<!-- Text input-->
+			<div class="form-group">
+			  <label class="col-md-4 control-label" for=""> LOGS INICIAL</label>  
+			  <div class="col-md-4">
+			  <input id="txtFrec" placeholder="" class="form-control input-md" type="text">
+				
+			  </div>
+			</div>
+
+			</fieldset>
+			</form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="cmdOK" class="btn btn-success" data-dismiss="modal">OK</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- fin modal -->
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+</body>

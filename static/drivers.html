@@ -1,0 +1,100 @@
+
+<html>
+<head>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+
+<script src="caltecmonitor.js" language="javascript"></script>
+<script src="drivers.js" language="javascript"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+<style>
+  .panel-body {
+    overflow: auto;
+  }
+  
+  .modal-body {
+    overflow: auto;
+  }
+</style>
+</head>
+
+<body>
+
+<div class="container-fluid">
+  <h1 class="page-header" id="principal">Un momento por favor...</h1>
+  <!--p> .</p-->
+  
+  
+  <div id="loadedDrivers" class="panel panel-success">
+    <div class="panel-heading">
+      <h3 class="panel-title">Controladores cargados</h3>
+    </div>
+    <div class="panel-body">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th width="100px">Imagen</th>
+            <th>Modelo</th>
+          </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+    <div id="notLoadedDrivers" class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title" style="margin-top: 8px; float:left;">Controladores detectados, no cargados</h3>
+    <label class="btn btn-default btn-file pull-right">Subir nuevo controlador<input type="file" style="display: none;">
+</label><div class="clearfix"></div>
+    </div>
+    <div class="panel-body">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th width="100px" >Imagen</th>
+            <th>Modelo</th>
+          </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+
+
+<!-- Modal -->
+<div id="historyModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Histórico</h4>
+      </div>
+      <div class="modal-body">
+      </div>
+      <div class="modal-footer">
+        <!-- <button type="button" id="cmdOK" class="btn btn-default" data-dismiss="modal">OK</button> -->
+        <button type="button" class="btn btn-default" data-dismiss="modal">Listo</button>
+        <button type="button" id="cmdDownload" class="btn btn-default" data-dismiss="modal">Descargar</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+</body>

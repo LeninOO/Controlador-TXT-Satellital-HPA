@@ -1,0 +1,1 @@
+{"viewName": "vistanueva1", "mainOutputTask": "meter_readings_query", "fromTasks": [{"taskName": "meter_readings_query", "chooseOutputs": ["ctemp", "fanvolt", "rfoutdb"]}], "registers": 5, "template": "tables", "viewDescription": "Esta es una vista de prueba", "mainOutput": "ctemp"}

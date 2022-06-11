@@ -1,0 +1,1 @@
+{"viewName": "otraprueba", "mainOutputTask": "meter_readings_query", "fromTasks": [{"taskName": "meter_readings_query", "chooseOutputs": [ "refrf"]}], "registers": 4, "template": "gauge", "viewDescription": "vistanueva2", "mainOutput": "refrf"}

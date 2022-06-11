@@ -1,0 +1,1 @@
+{"viewName": "402", "mainOutputTask": "", "fromTasks": [{"taskName": "meter_readings_query", "chooseOutputs": ["ctemp"]}, {"taskName": "", "chooseOutputs": [""]}, {"taskName": "tx_datarateMOD", "chooseOutputs": [""]}], "registers": 6, "template": "linegraph", "viewDescription": "HPA", "mainOutput": ""}

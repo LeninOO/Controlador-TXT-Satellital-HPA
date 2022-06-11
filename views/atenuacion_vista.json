@@ -1,0 +1,12 @@
+{
+	"viewName": "atenuacion",
+	"mainOutputTask": "meter_readings_query",
+	"fromTasks": [{
+		"taskName": "meter_readings_query",
+		"chooseOutputs": ["attenuatordb"]
+	}],
+	"registers": 120,
+	"template": "linesgraphcjs",
+	"viewDescription": " Atenuacion  (dB)",
+	"mainOutput": "attenuatordb"
+}

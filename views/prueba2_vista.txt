@@ -1,0 +1,12 @@
+{
+  "viewName":"sucesos_pc",
+  "viewDescription": "Sucesos para PC",
+  "registers": 4,
+  "mainOutputTask": "consultar_version",
+  "mainOutput": "kernelver",
+  "fromTasks": [{
+    "taskName":"consultar_version",
+    "chooseOutputs": ["kernelver", "osver"]
+  }],
+  "template": "tables"
+}

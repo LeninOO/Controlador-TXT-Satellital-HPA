@@ -1,0 +1,12 @@
+{
+  "viewName":"sucesos_amp",
+  "viewDescription": "Temperatura del amplificador",
+  "registers": 5,
+  "mainOutputTask": "meter_readings_query",
+  "mainOutput": "tubetemp",
+  "fromTasks": [{
+    "taskName":"meter_readings_query",
+    "chooseOutputs": ["tubetemp"]
+  }],
+  "template": "gauge"
+}

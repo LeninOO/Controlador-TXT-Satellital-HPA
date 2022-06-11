@@ -1,0 +1,12 @@
+{
+	"viewName": "ihelix",
+	"mainOutputTask": "meter_readings_query",
+	"fromTasks": [{
+		"taskName": "meter_readings_query",
+		"chooseOutputs": ["helixcurrent"]
+	}],
+	"registers": 20,
+	"template": "linesgraphcjs",
+	"viewDescription": "Corriente de helix (mA)",
+	"mainOutput": "helixcurrent"
+}

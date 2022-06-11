@@ -1,0 +1,12 @@
+{
+	"viewName": "reflejada",
+	"mainOutputTask": "meter_readings_query",
+	"fromTasks": [{
+		"taskName": "meter_readings_query",
+		"chooseOutputs": ["refrf"]
+	}],
+	"registers": 20,
+	"template": "linesgraphcjs",
+	"viewDescription": "Potencia Reflejada (W)",
+	"mainOutput": "refrf"
+}

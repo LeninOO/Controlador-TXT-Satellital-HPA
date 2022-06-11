@@ -1,0 +1,24 @@
+{
+  "taskName": "consultar_transmision_10",
+  "modelNumber": "XYZ-1234",
+  "commandName": "snmpget",
+  "connectTo": "cnx2",
+  "params": [
+    { "paramName": "oid" ,
+      "paramValue": "1.3.6.1.4.1.6247.80.1.3.8.6.1.10.1"
+    },
+    {
+      "paramName": "ipAddr",
+      "paramValue": "192.168.101.10"
+    }, {
+      "paramName": "version",
+      "paramValue": "1"
+    }, {
+      "paramName": "communityName",
+      "paramValue": "public"
+    }
+  ],
+  "freq": 1
+
+}
+

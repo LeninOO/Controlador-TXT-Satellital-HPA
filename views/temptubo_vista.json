@@ -1,0 +1,12 @@
+{
+	"viewName": "temptubo",
+	"mainOutputTask": "meter_readings_query",
+	"fromTasks": [{
+		"taskName": "meter_readings_query",
+		"chooseOutputs": ["tubetemp"]
+	}],
+	"registers": 20,
+	"template": "linesgraphcjs",
+	"viewDescription": "TEMP. DE VALVULA (C)",
+	"mainOutput": "tubetemp"
+}

@@ -1,0 +1,81 @@
+
+<html>
+<head>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+
+<script src="caltecmonitor.js" language="javascript"></script>
+<script src="connections.js" language="javascript"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+<style>
+  .panel-body {
+    overflow: auto;
+  }
+  
+  .modal-body {
+    overflow: auto;
+  }
+</style>
+</head>
+
+<body>
+
+<div class="container-fluid">
+  <h1 class="page-header" id="principal">Administrar Conexiones</h1>
+  <!--p> .</p-->
+  
+  <div id="connections" class="panel panel-info">
+    <div class="panel-heading">
+      <h3 class="panel-title" style="margin-top: 8px; float:left;">Conexiones para monitoreo</h3>
+      <button type="button" id="cmdNewConnect" class="btn btn-default pull-right" data-dismiss="modal">Nueva Conexión</button><div class="clearfix"></div>
+    </div>
+    <div class="panel-body">
+    
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Nombre de la conexión</th>
+            <th>Archivo controlador</th>
+            <th>Tipo de conexión</th>
+            <th>Dirección IP (si aplica)</th>
+            <th>Tiempo de espera (s)</th>
+          </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+
+
+<!-- Modal -->
+<div id="newConnectionModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Agregar nueva conexión</h4>
+      </div>
+      <div class="modal-body">
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="cmdOK" class="btn btn-default" data-dismiss="modal">OK</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+</body>

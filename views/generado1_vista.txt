@@ -1,0 +1,10 @@
+{"viewName": "generado1", 
+"mainOutputTask": "consultar_transmision_10", 
+"fromTasks": [
+{"taskName": "consultar_transmision_10", 
+"chooseOutputs": ["snmpgetout"]}], 
+"registers": 10, 
+"template": "linesgraph", 
+"viewDescription": "Transmision para 192.168.101.10", 
+"mainOutput": "snmpgetout"
+}

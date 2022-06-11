@@ -1,0 +1,23 @@
+{
+  "taskName": "datarate_ACM",
+  "modelNumber": "XYZ-1234",
+  "commandName": "snmpget",
+  "connectTo": "cnx2",
+  "params": [
+    { "paramName": "oid" ,
+      "paramValue": "1.3.6.1.4.1.6247.61.1.2.2.16.0"
+    },
+    {
+      "paramName": "ipAddr",
+      "paramValue": "10.106.142.6"
+    }, {
+      "paramName": "version",
+      "paramValue": "1"
+    }, {
+      "paramName": "communityName",
+      "paramValue": "public"
+    }
+  ],
+  "freq": 1
+
+}

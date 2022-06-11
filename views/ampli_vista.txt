@@ -1,0 +1,12 @@
+{
+	"viewName": "ampli",
+	"mainOutputTask": "meter_readings_query",
+	"fromTasks": [{
+		"taskName": "meter_readings_query",
+		"chooseOutputs": ["ctemp"]
+	}],
+	"registers": 100,
+	"template": "linesgraphcjs",
+	"viewDescription": "Temperaturat",
+	"mainOutput": "ctemp"
+}
