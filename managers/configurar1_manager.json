@@ -1,0 +1,10 @@
+{
+  "managerName": "configurar1",
+  "managerDesc": "Atenuacion",
+  "modelNumber": "XYZ-1234",
+  "connectTo": "cnx2",
+  "commandName": "set",
+  "params":[],
+  "toForm": [ { "label": "atenuacion", "name": "atenuacion", "control":"text" } ]
+
+}

@@ -1,0 +1,10 @@
+{
+  "managerName": "configurar5",
+  "managerDesc": "Comandos",
+  "modelNumber": "XYZ-1234",
+  "connectTo": "cnx2",
+  "commandName": "comandos",
+  "params":[],
+  "toForm": [ { "label": "limpiar", "name": "potenciaout", "select":"limpiar" } ]
+  
+}

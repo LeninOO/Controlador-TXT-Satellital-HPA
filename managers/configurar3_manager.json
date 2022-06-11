@@ -1,0 +1,10 @@
+{
+  "managerName": "configurar3",
+  "managerDesc": "Potencia de Salida",
+  "modelNumber": "XYZ-1234",
+  "connectTo": "cnx2",
+  "commandName": "potencia",
+  "params":[],
+  "toForm": [ { "label": "Potencia", "name": "potenciaout", "control":"text" } ]
+  
+}
