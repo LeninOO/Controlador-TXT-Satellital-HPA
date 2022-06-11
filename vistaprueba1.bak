@@ -1,0 +1,10 @@
+{
+  "viewName":"Sucesos para CPI700",
+  "outputList": [{
+    "taskName":"meter_readings_query",
+    "outputList": ["tubetemp"],
+    "registers": 10
+  }
+  ],
+  "template": "tables"
+}

@@ -1,0 +1,18 @@
+{
+  "deviceList": [
+    {
+    "connectionName": "cnx1",
+    "driverFile": "cpi700_driver.json",
+    "ipAddress": "192.168.2.101",
+    "type":"telnet",
+    "timeout":1
+    },
+    {
+    "connectionName": "cnx2",
+    "driverFile": "prueba_driver.json",
+    "ipAddress": "",
+    "type":"cmdshell",
+    "timeout":0
+    }
+  ]
+}

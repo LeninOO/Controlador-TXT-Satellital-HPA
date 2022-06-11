@@ -1,0 +1,7 @@
+{
+	"groupList": [{
+		"groupName": "equiposremotos",
+		"groupDesc": "Parametros del Amplificador ",
+		"viewsList": ["atenuacion","helix","potenciarf","temptubo","ihelix","reflejada"]
+	}]
+}
